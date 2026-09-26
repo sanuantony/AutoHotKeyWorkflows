@@ -95,7 +95,7 @@ class GenerateIcueProfileTests(unittest.TestCase):
         '''
 
     def test_generate_icue_profile_creates_full_key_remaps(self):
-        """AC 2 & AC 3: Verify all keys in KEY_LIST are remapped with unique identifiers."""
+        """AC 2 & AC 3: Verify all keys in KEY_LIST are remapped with F13 + Ctrl + Alt + Shift + Key combination."""
         source = os.path.join(self.test_dir, 'test_source.cueprofile')
         output = os.path.join(self.test_dir, 'test_output.cueprofile')
         
@@ -133,14 +133,16 @@ class GenerateIcueProfileTests(unittest.TestCase):
                            f'Trigger key should be {key}')
 
             # Verify modifier stack
-            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value0').text, 'LeftCtrl',
-                           'First modifier should be LeftCtrl')
-            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value1').text, 'LeftShift',
-                           'Second modifier should be LeftShift')
-            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value2').text, 'LeftAlt',
-                           'Third modifier should be LeftAlt')
-            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value3').text, key,
-                           f'Fourth key should be {key}')
+            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value0').text, 'F13',
+                           'First modifier should be F13')
+            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value1').text, 'LeftCtrl',
+                           'Second modifier should be LeftCtrl')
+            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value2').text, 'LeftShift',
+                           'Third modifier should be LeftShift')
+            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value3').text, 'LeftAlt',
+                           'Fourth modifier should be LeftAlt')
+            self.assertEqual(value.find('first/ptr_wrapper/data/keyStroke/value4').text, key,
+                           f'Fifth key should be {key}')
 
             # Verify execHint matches original structure
             exec_hint = value.find('first/ptr_wrapper/data/base/executionHints/execHint')
@@ -267,14 +269,16 @@ class GenerateIcueProfileTests(unittest.TestCase):
         self.assertEqual(assignment.tag, 'value0', "Root tag should be value0")
         self.assertEqual(assignment.find('second/key').text, 'A',
                         "Trigger key should be A")
-        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value0').text, 'LeftCtrl',
-                        "First modifier should be LeftCtrl")
-        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value1').text, 'LeftShift',
-                        "Second modifier should be LeftShift")
-        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value2').text, 'LeftAlt',
-                        "Third modifier should be LeftAlt")
-        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value3').text, 'A',
-                        "Fourth key should be A")
+        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value0').text, 'F13',
+                        "First modifier should be F13")
+        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value1').text, 'LeftCtrl',
+                        "Second modifier should be LeftCtrl")
+        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value2').text, 'LeftShift',
+                        "Third modifier should be LeftShift")
+        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value3').text, 'LeftAlt',
+                        "Fourth modifier should be LeftAlt")
+        self.assertEqual(assignment.find('first/ptr_wrapper/data/keyStroke/value4').text, 'A',
+                        "Fifth key should be A")
         
         # Verify cereal_class_version tags are present (matching original structure)
         self.assertEqual(assignment.find('first/ptr_wrapper/data/base/cereal_class_version').text, '202',
@@ -310,18 +314,224 @@ class GenerateIcueProfileTests(unittest.TestCase):
     def test_key_list_comprehensive_coverage(self):
         """Verify KEY_LIST contains expected keys and comprehensive coverage."""
         # Verify total count
-        self.assertEqual(len(KEY_LIST), 114, "KEY_LIST should contain 114 keys")
+        self.assertEqual(len(KEY_LIST), 115, "KEY_LIST should contain 115 keys")
         
         # Verify key categories are present
         self.assertIn("G1", KEY_LIST, "Should contain G-keys")
         self.assertIn("Escape", KEY_LIST, "Should contain function row keys")
         self.assertIn("A", KEY_LIST, "Should contain alphabet keys")
-        self.assertIn("Spacebar", KEY_LIST, "Should contain spacebar")
-        self.assertIn("Num0", KEY_LIST, "Should contain numpad keys")
+        self.assertIn("Space", KEY_LIST, "Should contain spacebar")
+        self.assertIn("Keypad0", KEY_LIST, "Should contain numpad keys")
         self.assertIn("UpArrow", KEY_LIST, "Should contain arrow keys")
+        
+        # Verify new naming convention
+        self.assertIn("GraveAccentAndTilde", KEY_LIST, "Should use new naming convention")
+        self.assertIn("BracketLeft", KEY_LIST, "Should use new naming convention")
+        self.assertIn("KeypadSlash", KEY_LIST, "Should use new naming convention")
         
         # Verify no duplicates
         self.assertEqual(len(KEY_LIST), len(set(KEY_LIST)), "KEY_LIST should not contain duplicates")
+
+    def test_f13_modifier_first_position(self):
+        """Verify F13 is always the first modifier in the key combination."""
+        source = os.path.join(self.test_dir, 'test_source.cueprofile')
+        output = os.path.join(self.test_dir, 'test_output.cueprofile')
+        
+        with open(source, 'w', encoding='utf-8') as f:
+            f.write(self._build_valid_profile_xml())
+
+        generate_icue_profile(source, output)
+
+        root = ET.parse(output).getroot()
+        actions = next(root.iter('actions'))
+
+        # Verify F13 is first modifier for all keys
+        for index, key in enumerate(KEY_LIST):
+            value = actions.find(f'value{index}')
+            first_modifier = value.find('first/ptr_wrapper/data/keyStroke/value0')
+            self.assertEqual(first_modifier.text, 'F13',
+                           f'F13 should be first modifier for key {key}')
+
+    def test_five_key_combination_structure(self):
+        """Verify each remap uses exactly 5 keys in the combination."""
+        source = os.path.join(self.test_dir, 'test_source.cueprofile')
+        output = os.path.join(self.test_dir, 'test_output.cueprofile')
+        
+        with open(source, 'w', encoding='utf-8') as f:
+            f.write(self._build_valid_profile_xml())
+
+        generate_icue_profile(source, output)
+
+        root = ET.parse(output).getroot()
+        actions = next(root.iter('actions'))
+
+        # Verify 5-value structure for all keys
+        for index, key in enumerate(KEY_LIST):
+            value = actions.find(f'value{index}')
+            key_stroke = value.find('first/ptr_wrapper/data/keyStroke')
+            
+            # Count value children
+            value_children = [child for child in key_stroke if child.tag.startswith('value')]
+            self.assertEqual(len(value_children), 5,
+                           f'Key {key} should have exactly 5 values in combination')
+
+    def test_specific_key_categories_validation(self):
+        """Validate specific key categories are properly remapped."""
+        source = os.path.join(self.test_dir, 'test_source.cueprofile')
+        output = os.path.join(self.test_dir, 'test_output.cueprofile')
+        
+        with open(source, 'w', encoding='utf-8') as f:
+            f.write(self._build_valid_profile_xml())
+
+        generate_icue_profile(source, output)
+
+        root = ET.parse(output).getroot()
+        actions = next(root.iter('actions'))
+
+        # Test specific key categories
+        test_keys = {
+            'G1': 'G-key',
+            'Escape': 'Function key',
+            'A': 'Alphabet key',
+            'Space': 'Special key',
+            'Keypad0': 'Numpad key',
+            'UpArrow': 'Navigation key',
+            'GraveAccentAndTilde': 'Special character key'
+        }
+
+        for key_name, category in test_keys.items():
+            if key_name in KEY_LIST:
+                index = KEY_LIST.index(key_name)
+                value = actions.find(f'value{index}')
+                self.assertIsNotNone(value, f'{category} {key_name} should exist')
+                
+                # Verify the key is properly mapped
+                trigger_key = value.find('second/key')
+                self.assertEqual(trigger_key.text, key_name,
+                               f'{category} should trigger {key_name}')
+
+    def test_all_keys_have_unique_names(self):
+        """Verify all generated assignments have unique names."""
+        source = os.path.join(self.test_dir, 'test_source.cueprofile')
+        output = os.path.join(self.test_dir, 'test_output.cueprofile')
+        
+        with open(source, 'w', encoding='utf-8') as f:
+            f.write(self._build_valid_profile_xml())
+
+        generate_icue_profile(source, output)
+
+        root = ET.parse(output).getroot()
+        actions = next(root.iter('actions'))
+
+        names = set()
+        for index, key in enumerate(KEY_LIST):
+            value = actions.find(f'value{index}')
+            name = value.find('first/ptr_wrapper/data/base/name').text
+            self.assertNotIn(name, names, f'Name "{name}" should be unique')
+            names.add(name)
+            self.assertIn(key, name, f'Name should contain key {key}')
+
+    def test_xml_structure_integrity(self):
+        """Verify the complete XML structure is valid and well-formed."""
+        source = os.path.join(self.test_dir, 'test_source.cueprofile')
+        output = os.path.join(self.test_dir, 'test_output.cueprofile')
+        
+        with open(source, 'w', encoding='utf-8') as f:
+            f.write(self._build_valid_profile_xml())
+
+        generate_icue_profile(source, output)
+
+        # Verify file is valid XML
+        try:
+            tree = ET.parse(output)
+            root = tree.getroot()
+        except ET.ParseError as e:
+            self.fail(f'Output should be valid XML: {e}')
+
+        # Verify root element exists
+        self.assertIsNotNone(root, "Root element should exist")
+
+        # Verify actions node exists and has correct attributes
+        actions = next(root.iter('actions'))
+        self.assertIsNotNone(actions, "Actions node should exist")
+        self.assertEqual(actions.attrib.get('size'), 'dynamic',
+                        "Actions should have dynamic size")
+
+    def test_modifier_order_consistency(self):
+        """Verify modifier order is consistent across all keys."""
+        source = os.path.join(self.test_dir, 'test_source.cueprofile')
+        output = os.path.join(self.test_dir, 'test_output.cueprofile')
+        
+        with open(source, 'w', encoding='utf-8') as f:
+            f.write(self._build_valid_profile_xml())
+
+        generate_icue_profile(source, output)
+
+        root = ET.parse(output).getroot()
+        actions = next(root.iter('actions'))
+
+        expected_order = ['F13', 'LeftCtrl', 'LeftShift', 'LeftAlt']
+
+        for index, key in enumerate(KEY_LIST):
+            value = actions.find(f'value{index}')
+            key_stroke = value.find('first/ptr_wrapper/data/keyStroke')
+            
+            for i, expected_modifier in enumerate(expected_order):
+                actual_modifier = key_stroke.find(f'value{i}')
+                self.assertEqual(actual_modifier.text, expected_modifier,
+                               f'Modifier {i} should be {expected_modifier} for key {key}')
+
+    def test_pointer_id_range_validation(self):
+        """Verify pointer IDs are within expected range and follow pattern."""
+        source = os.path.join(self.test_dir, 'test_source.cueprofile')
+        output = os.path.join(self.test_dir, 'test_output.cueprofile')
+        
+        with open(source, 'w', encoding='utf-8') as f:
+            f.write(self._build_valid_profile_xml())
+
+        generate_icue_profile(source, output)
+
+        root = ET.parse(output).getroot()
+        actions = next(root.iter('actions'))
+
+        pointer_ids = []
+        for index, key in enumerate(KEY_LIST):
+            value = actions.find(f'value{index}')
+            ptr_id = int(value.find('first/ptr_wrapper/id').text)
+            pointer_ids.append(ptr_id)
+
+        # Verify sequential pattern
+        expected_ids = [2147483651 + (i * 2) for i in range(len(KEY_LIST))]
+        self.assertEqual(pointer_ids, expected_ids,
+                        "Pointer IDs should follow expected sequential pattern")
+
+        # Verify no duplicates
+        self.assertEqual(len(pointer_ids), len(set(pointer_ids)),
+                        "Pointer IDs should be unique")
+
+    def test_large_scale_generation_performance(self):
+        """Test that generating 114 keys completes successfully."""
+        import time
+        
+        source = os.path.join(self.test_dir, 'test_source.cueprofile')
+        output = os.path.join(self.test_dir, 'test_output.cueprofile')
+        
+        with open(source, 'w', encoding='utf-8') as f:
+            f.write(self._build_valid_profile_xml())
+
+        start_time = time.time()
+        result = generate_icue_profile(source, output)
+        end_time = time.time()
+
+        self.assertIsNotNone(result, "Generation should succeed")
+        self.assertLess(end_time - start_time, 5.0,
+                       "Generation should complete in reasonable time (< 5 seconds)")
+
+        # Verify all keys were generated
+        root = ET.parse(output).getroot()
+        actions = next(root.iter('actions'))
+        self.assertEqual(len(actions), len(KEY_LIST),
+                        f"All {len(KEY_LIST)} keys should be generated")
 
     def test_output_file_encoding(self):
         """AC 4: Verify output file uses UTF-8 encoding."""
