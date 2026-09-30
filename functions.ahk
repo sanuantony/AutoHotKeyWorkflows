@@ -4,7 +4,7 @@
 
 ; =========================================================================
 ; CORSAIR K55 FULL KEYBOARD MAPPER
-; Intercepts: Ctrl(^) + Shift(+) + Alt(!) + F13 + Key
+; Intercepts: F13 + Key
 ; =========================================================================
 
 F13 & Escape:: funcEscape()
@@ -114,399 +114,399 @@ F13 & NumpadDel:: funcKeypadPeriodAndDelete()
 ; =========================================================================
 
 funcLeftCtrl() {
-    MsgBox("LCtrl")
+    ShowTooltip("LCtrl", 500)
 }
 
 funcRightCtrl() {
-    MsgBox("RCtrl")
+    ShowTooltip("RCtrl", 500)
 }
 
 funcEscape() {
-    MsgBox("Escape")
+    ShowTooltip("Escape", 500)
 }
 
 funcF1() {
-    MsgBox("F1")
+    ShowTooltip("F1", 500)
 }
 
 funcF2() {
-    MsgBox("F2")
+    ShowTooltip("F2", 500)
 }
 
 funcF3() {
-    MsgBox("F3")
+    ShowTooltip("F3", 500)
 }
 
 funcF4() {
-    MsgBox("F4")
+    ShowTooltip("F4", 500)
 }
 
 funcF5() {
-    MsgBox("F5")
+    ShowTooltip("F5", 500)
 }
 
 funcF6() {
-    MsgBox("F6")
+    ShowTooltip("F6", 500)
 }
 
 funcF7() {
-    MsgBox("F7")
+    ShowTooltip("F7", 500)
 }
 
 funcF8() {
-    MsgBox("F8")
+    ShowTooltip("F8", 500)
 }
 
 funcF9() {
-    MsgBox("F9")
+    ShowTooltip("F9", 500)
 }
 
 funcF10() {
-    MsgBox("F10")
+    ShowTooltip("F10", 500)
 }
 
 funcF11() {
-    MsgBox("F11")
+    ShowTooltip("F11", 500)
 }
 
 funcF12() {
-    MsgBox("F12")
+    ShowTooltip("F12", 500)
 }
 
 funcGraveAccentAndTilde() {
-    MsgBox("``")
+    ShowTooltip("``", 500)
 }
 
 func1() {
-    MsgBox("1")
+    ShowTooltip("1", 500)
 }
 
 func2() {
-    MsgBox("2")
+    ShowTooltip("2", 500)
 }
 
 func3() {
-    MsgBox("3")
+    ShowTooltip("3", 500)
 }
 
 func4() {
-    MsgBox("4")
+    ShowTooltip("4", 500)
 }
 
 func5() {
-    MsgBox("5")
+    ShowTooltip("5", 500)
 }
 
 func6() {
-    MsgBox("6")
+    ShowTooltip("6", 500)
 }
 
 func7() {
-    MsgBox("7")
+    ShowTooltip("7", 500)
 }
 
 func8() {
-    MsgBox("8")
+    ShowTooltip("8", 500)
 }
 
 func9() {
-    MsgBox("9")
+    ShowTooltip("9", 500)
 }
 
 func0() {
-    MsgBox("0")
+    ShowTooltip("0", 500)
 }
 
 funcMinusAndUnderscore() {
-    MsgBox("-")
+    ShowTooltip("-", 500)
 }
 
 funcEqualsAndPlus() {
-    MsgBox("=")
+    ShowTooltip("=", 500)
 }
 
 funcBackspace() {
-    MsgBox("BackSpace")
+    ShowTooltip("BackSpace", 500)
 }
 
 funcTab() {
-    MsgBox("Tab")
+    ShowTooltip("Tab", 500)
 }
 
 funcQ() {
-    MsgBox("Q")
+    ShowTooltip("Q", 500)
 }
 
 funcW() {
-    MsgBox("W")
+    ShowTooltip("W", 500)
 }
 
 funcE() {
-    MsgBox("E")
+    ShowTooltip("E", 500)
 }
 
 funcR() {
-    MsgBox("R")
+    ShowTooltip("R", 500)
 }
 
 funcT() {
-    MsgBox("T")
+    ShowTooltip("T", 500)
 }
 
 funcY() {
-    MsgBox("Y")
+    ShowTooltip("Y", 500)
 }
 
 funcU() {
-    MsgBox("U")
+    ShowTooltip("U", 500)
 }
 
 funcI() {
-    MsgBox("I")
+    ShowTooltip("I", 500)
 }
 
 funcO() {
-    MsgBox("O")
+    ShowTooltip("O", 500)
 }
 
 funcP() {
-    MsgBox("P")
+    ShowTooltip("P", 500)
 }
 
 funcBracketLeft() {
-    MsgBox("[")
+    ShowTooltip("[", 500)
 }
 
 funcBracketRight() {
-    MsgBox("]")
+    ShowTooltip("]", 500)
 }
 
 funcBackslash() {
-    MsgBox("\\")
+    ShowTooltip("\\", 500)
 }
 
 funcCapsLock() {
-    MsgBox("CapsLock")
+    ShowTooltip("CapsLock", 500)
 }
 
 funcA() {
-    MsgBox("A")
+    ShowTooltip("A", 500)
 }
 
 funcS() {
-    MsgBox("S")
+    ShowTooltip("S", 500)
 }
 
 funcD() {
-    MsgBox("D")
+    ShowTooltip("D", 500)
 }
 
 funcF() {
-    MsgBox("F")
+    ShowTooltip("F", 500)
 }
 
 funcG() {
-    MsgBox("G")
+    ShowTooltip("G", 500)
 }
 
 funcH() {
-    MsgBox("H")
+    ShowTooltip("H", 500)
 }
 
 funcJ() {
-    MsgBox("J")
+    ShowTooltip("J", 500)
 }
 
 funcK() {
-    MsgBox("K")
+    ShowTooltip("K", 500)
 }
 
 funcL() {
-    MsgBox("L")
+    ShowTooltip("L", 500)
 }
 
 funcSemicolonAndColon() {
-    MsgBox(";")
+    ShowTooltip(";", 500)
 }
 
 funcApostropheAndDoubleQuote() {
-    MsgBox("'")
+    ShowTooltip("'", 500)
 }
 
 funcEnter() {
-    MsgBox("Enter")
+    ShowTooltip("Enter", 500)
 }
 
 funcZ() {
-    MsgBox("Z")
+    ShowTooltip("Z", 500)
 }
 
 funcX() {
-    MsgBox("X")
+    ShowTooltip("X", 500)
 }
 
 funcC() {
-    MsgBox("C")
+    ShowTooltip("C", 500)
 }
 
 funcV() {
-    MsgBox("V")
+    ShowTooltip("V", 500)
 }
 
 funcB() {
-    MsgBox("B")
+    ShowTooltip("B", 500)
 }
 
 funcN() {
-    MsgBox("N")
+    ShowTooltip("N", 500)
 }
 
 funcM() {
-    MsgBox("M")
+    ShowTooltip("M", 500)
 }
 
 funcCommaAndLessThan() {
-    MsgBox(",")
+    ShowTooltip(",", 500)
 }
 
 funcPeriodAndBiggerThan() {
-    MsgBox(".")
+    ShowTooltip(".", 500)
 }
 
 funcSlashAndQuestionMark() {
-    MsgBox("/")
+    ShowTooltip("/", 500)
 }
 
 funcLeftGui() {
-    MsgBox("LWin")
+    ShowTooltip("LWin", 500)
 }
 
 funcLeftAlt() {
-    MsgBox("LAlt")
+    ShowTooltip("LAlt", 500)
 }
 
 funcSpace() {
-    MsgBox("Space")
+    ShowTooltip("Space", 500)
 }
 
 funcRightAlt() {
-    MsgBox("RAlt")
+    ShowTooltip("RAlt", 500)
 }
 
 funcRightGui() {
-    MsgBox("RWin")
+    ShowTooltip("RWin", 500)
 }
 
 funcApplication() {
-    MsgBox("AppsKey")
+    ShowTooltip("AppsKey", 500)
 }
 
 funcPrintScreen() {
-    MsgBox("PrintScreen")
+    ShowTooltip("PrintScreen", 500)
 }
 
 funcScrollLock() {
-    MsgBox("ScrollLock")
+    ShowTooltip("ScrollLock", 500)
 }
 
 funcPauseBreak() {
-    MsgBox("Pause")
+    ShowTooltip("Pause", 500)
 }
 
 funcInsert() {
-    MsgBox("Insert")
+    ShowTooltip("Insert", 500)
 }
 
 funcHome() {
-    MsgBox("Home")
+    ShowTooltip("Home", 500)
 }
 
 funcPageUp() {
-    MsgBox("PgUp")
+    ShowTooltip("PgUp", 500)
 }
 
 funcEnd() {
-    MsgBox("End")
+    ShowTooltip("End", 500)
 }
 
 funcPageDown() {
-    MsgBox("PgDn")
+    ShowTooltip("PgDn", 500)
 }
 
 funcUpArrow() {
-    MsgBox("Up")
+    ShowTooltip("Up", 500)
 }
 
 funcDownArrow() {
-    MsgBox("Down")
+    ShowTooltip("Down", 500)
 }
 
 funcLeftArrow() {
-    MsgBox("Left")
+    ShowTooltip("Left", 500)
 }
 
 funcRightArrow() {
-    MsgBox("Right")
+    ShowTooltip("Right", 500)
 }
 
 funcNumLock() {
-    MsgBox("NumLock")
+    ShowTooltip("NumLock", 500)
 }
 
 funcKeypadSlash() {
-    MsgBox("NumpadDiv")
+    ShowTooltip("NumpadDiv", 500)
 }
 
 funcKeypadAsterisk() {
-    MsgBox("NumpadMult")
+    ShowTooltip("NumpadMult", 500)
 }
 
 funcKeypadMinus() {
-    MsgBox("NumpadSub")
+    ShowTooltip("NumpadSub", 500)
 }
 
 funcKeypad7() {
-    MsgBox("Numpad7")
+    ShowTooltip("Numpad7", 500)
 }
 
 funcKeypad8() {
-    MsgBox("Numpad8")
+    ShowTooltip("Numpad8", 500)
 }
 
 funcKeypad9() {
-    MsgBox("Numpad9")
+    ShowTooltip("Numpad9", 500)
 }
 
 funcKeypadPlus() {
-    MsgBox("NumpadAdd")
+    ShowTooltip("NumpadAdd", 500)
 }
 
 funcKeypad4() {
-    MsgBox("Numpad4")
+    ShowTooltip("Numpad4", 500)
 }
 
 funcKeypad5() {
-    MsgBox("Numpad5")
+    ShowTooltip("Numpad5", 500)
 }
 
 funcKeypad6() {
-    MsgBox("Numpad6")
+    ShowTooltip("Numpad6", 500)
 }
 
 funcKeypad1() {
-    MsgBox("Numpad1")
+    ShowTooltip("Numpad1", 500)
 }
 
 funcKeypad2() {
-    MsgBox("Numpad2")
+    ShowTooltip("Numpad2", 500)
 }
 
 funcKeypad3() {
-    MsgBox("Numpad3")
+    ShowTooltip("Numpad3", 500)
 }
 
 funcKeypadEnter() {
-    MsgBox("NumpadEnter")
+    ShowTooltip("NumpadEnter", 500)
 }
 
 funcKeypad0() {
