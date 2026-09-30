@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile AHK Script",
+            "type": "shell",
+            "command": "C:\\Program Files\\AutoHotkey\\Compiler\\Ahk2Exe.exe",
+            "args": [
+                "/in",
+                "${file}",
+                "/out",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

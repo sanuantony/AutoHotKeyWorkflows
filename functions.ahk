@@ -1,5 +1,6 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
+#Include CoreLibrary.ahk
 
 ; =========================================================================
 ; CORSAIR K55 FULL KEYBOARD MAPPER
@@ -70,11 +71,13 @@ F13 & m:: funcM()
 F13 & ,:: funcCommaAndLessThan()
 F13 & .:: funcPeriodAndBiggerThan()
 F13 & /:: funcSlashAndQuestionMark()
+F13 & LCtrl:: funcLeftCtrl()
 F13 & LWin:: funcLeftGui()
 F13 & LAlt:: funcLeftAlt()
 F13 & Space:: funcSpace()
 F13 & RAlt:: funcRightAlt()
 F13 & RWin:: funcRightGui()
+F13 & RCtrl:: funcRightCtrl()
 F13 & AppsKey:: funcApplication()
 F13 & PrintScreen:: funcPrintScreen()
 F13 & ScrollLock:: funcScrollLock()
@@ -110,400 +113,406 @@ F13 & NumpadDel:: funcKeypadPeriodAndDelete()
 ; KEYBOARD FUNCTIONS
 ; =========================================================================
 
+funcLeftCtrl() {
+    MsgBox("LCtrl")
+}
 
+funcRightCtrl() {
+    MsgBox("RCtrl")
+}
 
 funcEscape() {
-    MsgBox("Ctrl+Shift+Alt+F13+Escape")
+    MsgBox("Escape")
 }
 
 funcF1() {
-    MsgBox("Ctrl+Shift+Alt+F13+F1")
+    MsgBox("F1")
 }
 
 funcF2() {
-    MsgBox("Ctrl+Shift+Alt+F13+F2")
+    MsgBox("F2")
 }
 
 funcF3() {
-    MsgBox("Ctrl+Shift+Alt+F13+F3")
+    MsgBox("F3")
 }
 
 funcF4() {
-    MsgBox("Ctrl+Shift+Alt+F13+F4")
+    MsgBox("F4")
 }
 
 funcF5() {
-    MsgBox("Ctrl+Shift+Alt+F13+F5")
+    MsgBox("F5")
 }
 
 funcF6() {
-    MsgBox("Ctrl+Shift+Alt+F13+F6")
+    MsgBox("F6")
 }
 
 funcF7() {
-    MsgBox("Ctrl+Shift+Alt+F13+F7")
+    MsgBox("F7")
 }
 
 funcF8() {
-    MsgBox("Ctrl+Shift+Alt+F13+F8")
+    MsgBox("F8")
 }
 
 funcF9() {
-    MsgBox("Ctrl+Shift+Alt+F13+F9")
+    MsgBox("F9")
 }
 
 funcF10() {
-    MsgBox("Ctrl+Shift+Alt+F13+F10")
+    MsgBox("F10")
 }
 
 funcF11() {
-    MsgBox("Ctrl+Shift+Alt+F13+F11")
+    MsgBox("F11")
 }
 
 funcF12() {
-    MsgBox("Ctrl+Shift+Alt+F13+F12")
+    MsgBox("F12")
 }
 
 funcGraveAccentAndTilde() {
-    MsgBox("Ctrl+Shift+Alt+F13+``")
+    MsgBox("``")
 }
 
 func1() {
-    MsgBox("Ctrl+Shift+Alt+F13+1")
+    MsgBox("1")
 }
 
 func2() {
-    MsgBox("Ctrl+Shift+Alt+F13+2")
+    MsgBox("2")
 }
 
 func3() {
-    MsgBox("Ctrl+Shift+Alt+F13+3")
+    MsgBox("3")
 }
 
 func4() {
-    MsgBox("Ctrl+Shift+Alt+F13+4")
+    MsgBox("4")
 }
 
 func5() {
-    MsgBox("Ctrl+Shift+Alt+F13+5")
+    MsgBox("5")
 }
 
 func6() {
-    MsgBox("Ctrl+Shift+Alt+F13+6")
+    MsgBox("6")
 }
 
 func7() {
-    MsgBox("Ctrl+Shift+Alt+F13+7")
+    MsgBox("7")
 }
 
 func8() {
-    MsgBox("Ctrl+Shift+Alt+F13+8")
+    MsgBox("8")
 }
 
 func9() {
-    MsgBox("Ctrl+Shift+Alt+F13+9")
+    MsgBox("9")
 }
 
 func0() {
-    MsgBox("Ctrl+Shift+Alt+F13+0")
+    MsgBox("0")
 }
 
 funcMinusAndUnderscore() {
-    MsgBox("Ctrl+Shift+Alt+F13+-")
+    MsgBox("-")
 }
 
 funcEqualsAndPlus() {
-    MsgBox("Ctrl+Shift+Alt+F13+=")
+    MsgBox("=")
 }
 
 funcBackspace() {
-    MsgBox("Ctrl+Shift+Alt+F13+BackSpace")
+    MsgBox("BackSpace")
 }
 
 funcTab() {
-    MsgBox("Ctrl+Shift+Alt+F13+Tab")
+    MsgBox("Tab")
 }
 
 funcQ() {
-    MsgBox("Ctrl+Shift+Alt+F13+Q")
+    MsgBox("Q")
 }
 
 funcW() {
-    MsgBox("Ctrl+Shift+Alt+F13+W")
+    MsgBox("W")
 }
 
 funcE() {
-    MsgBox("Ctrl+Shift+Alt+F13+E")
+    MsgBox("E")
 }
 
 funcR() {
-    MsgBox("Ctrl+Shift+Alt+F13+R")
+    MsgBox("R")
 }
 
 funcT() {
-    MsgBox("Ctrl+Shift+Alt+F13+T")
+    MsgBox("T")
 }
 
 funcY() {
-    MsgBox("Ctrl+Shift+Alt+F13+Y")
+    MsgBox("Y")
 }
 
 funcU() {
-    MsgBox("Ctrl+Shift+Alt+F13+U")
+    MsgBox("U")
 }
 
 funcI() {
-    MsgBox("Ctrl+Shift+Alt+F13+I")
+    MsgBox("I")
 }
 
 funcO() {
-    MsgBox("Ctrl+Shift+Alt+F13+O")
+    MsgBox("O")
 }
 
 funcP() {
-    MsgBox("Ctrl+Shift+Alt+F13+P")
+    MsgBox("P")
 }
 
 funcBracketLeft() {
-    MsgBox("Ctrl+Shift+Alt+F13+[")
+    MsgBox("[")
 }
 
 funcBracketRight() {
-    MsgBox("Ctrl+Shift+Alt+F13+]")
+    MsgBox("]")
 }
 
 funcBackslash() {
-    MsgBox("Ctrl+Shift+Alt+F13+\\")
+    MsgBox("\\")
 }
 
 funcCapsLock() {
-    MsgBox("Ctrl+Shift+Alt+F13+CapsLock")
+    MsgBox("CapsLock")
 }
 
 funcA() {
-    MsgBox("Ctrl+Shift+Alt+F13+A")
+    MsgBox("A")
 }
 
 funcS() {
-    MsgBox("Ctrl+Shift+Alt+F13+S")
+    MsgBox("S")
 }
 
 funcD() {
-    MsgBox("Ctrl+Shift+Alt+F13+D")
+    MsgBox("D")
 }
 
 funcF() {
-    MsgBox("Ctrl+Shift+Alt+F13+F")
+    MsgBox("F")
 }
 
 funcG() {
-    MsgBox("Ctrl+Shift+Alt+F13+G")
+    MsgBox("G")
 }
 
 funcH() {
-    MsgBox("Ctrl+Shift+Alt+F13+H")
+    MsgBox("H")
 }
 
 funcJ() {
-    MsgBox("Ctrl+Shift+Alt+F13+J")
+    MsgBox("J")
 }
 
 funcK() {
-    MsgBox("Ctrl+Shift+Alt+F13+K")
+    MsgBox("K")
 }
 
 funcL() {
-    MsgBox("Ctrl+Shift+Alt+F13+L")
+    MsgBox("L")
 }
 
 funcSemicolonAndColon() {
-    MsgBox("Ctrl+Shift+Alt+F13+;")
+    MsgBox(";")
 }
 
 funcApostropheAndDoubleQuote() {
-    MsgBox("Ctrl+Shift+Alt+F13+'")
+    MsgBox("'")
 }
 
 funcEnter() {
-    MsgBox("Ctrl+Shift+Alt+F13+Enter")
+    MsgBox("Enter")
 }
 
 funcZ() {
-    MsgBox("Ctrl+Shift+Alt+F13+Z")
+    MsgBox("Z")
 }
 
 funcX() {
-    MsgBox("Ctrl+Shift+Alt+F13+X")
+    MsgBox("X")
 }
 
 funcC() {
-    MsgBox("Ctrl+Shift+Alt+F13+C")
+    MsgBox("C")
 }
 
 funcV() {
-    MsgBox("Ctrl+Shift+Alt+F13+V")
+    MsgBox("V")
 }
 
 funcB() {
-    MsgBox("Ctrl+Shift+Alt+F13+B")
+    MsgBox("B")
 }
 
 funcN() {
-    MsgBox("Ctrl+Shift+Alt+F13+N")
+    MsgBox("N")
 }
 
 funcM() {
-    MsgBox("Ctrl+Shift+Alt+F13+M")
+    MsgBox("M")
 }
 
 funcCommaAndLessThan() {
-    MsgBox("Ctrl+Shift+Alt+F13+,")
+    MsgBox(",")
 }
 
 funcPeriodAndBiggerThan() {
-    MsgBox("Ctrl+Shift+Alt+F13+.")
+    MsgBox(".")
 }
 
 funcSlashAndQuestionMark() {
-    MsgBox("Ctrl+Shift+Alt+F13+/")
+    MsgBox("/")
 }
 
 funcLeftGui() {
-    MsgBox("Ctrl+Shift+Alt+F13+LWin")
+    MsgBox("LWin")
 }
 
 funcLeftAlt() {
-    MsgBox("Ctrl+Shift+Alt+F13+LAlt")
+    MsgBox("LAlt")
 }
 
 funcSpace() {
-    MsgBox("Ctrl+Shift+Alt+F13+Space")
+    MsgBox("Space")
 }
 
 funcRightAlt() {
-    MsgBox("Ctrl+Shift+Alt+F13+RAlt")
+    MsgBox("RAlt")
 }
 
 funcRightGui() {
-    MsgBox("Ctrl+Shift+Alt+F13+RWin")
+    MsgBox("RWin")
 }
 
 funcApplication() {
-    MsgBox("Ctrl+Shift+Alt+F13+AppsKey")
+    MsgBox("AppsKey")
 }
 
 funcPrintScreen() {
-    MsgBox("Ctrl+Shift+Alt+F13+PrintScreen")
+    MsgBox("PrintScreen")
 }
 
 funcScrollLock() {
-    MsgBox("Ctrl+Shift+Alt+F13+ScrollLock")
+    MsgBox("ScrollLock")
 }
 
 funcPauseBreak() {
-    MsgBox("Ctrl+Shift+Alt+F13+Pause")
+    MsgBox("Pause")
 }
 
 funcInsert() {
-    MsgBox("Ctrl+Shift+Alt+F13+Insert")
+    MsgBox("Insert")
 }
 
 funcHome() {
-    MsgBox("Ctrl+Shift+Alt+F13+Home")
+    MsgBox("Home")
 }
 
 funcPageUp() {
-    MsgBox("Ctrl+Shift+Alt+F13+PgUp")
+    MsgBox("PgUp")
 }
 
 funcEnd() {
-    MsgBox("Ctrl+Shift+Alt+F13+End")
+    MsgBox("End")
 }
 
 funcPageDown() {
-    MsgBox("Ctrl+Shift+Alt+F13+PgDn")
+    MsgBox("PgDn")
 }
 
 funcUpArrow() {
-    MsgBox("Ctrl+Shift+Alt+F13+Up")
+    MsgBox("Up")
 }
 
 funcDownArrow() {
-    MsgBox("Ctrl+Shift+Alt+F13+Down")
+    MsgBox("Down")
 }
 
 funcLeftArrow() {
-    MsgBox("Ctrl+Shift+Alt+F13+Left")
+    MsgBox("Left")
 }
 
 funcRightArrow() {
-    MsgBox("Ctrl+Shift+Alt+F13+Right")
+    MsgBox("Right")
 }
 
 funcNumLock() {
-    MsgBox("Ctrl+Shift+Alt+F13+NumLock")
+    MsgBox("NumLock")
 }
 
 funcKeypadSlash() {
-    MsgBox("Ctrl+Shift+Alt+F13+NumpadDiv")
+    MsgBox("NumpadDiv")
 }
 
 funcKeypadAsterisk() {
-    MsgBox("Ctrl+Shift+Alt+F13+NumpadMult")
+    MsgBox("NumpadMult")
 }
 
 funcKeypadMinus() {
-    MsgBox("Ctrl+Shift+Alt+F13+NumpadSub")
+    MsgBox("NumpadSub")
 }
 
 funcKeypad7() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad7")
+    MsgBox("Numpad7")
 }
 
 funcKeypad8() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad8")
+    MsgBox("Numpad8")
 }
 
 funcKeypad9() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad9")
+    MsgBox("Numpad9")
 }
 
 funcKeypadPlus() {
-    MsgBox("Ctrl+Shift+Alt+F13+NumpadAdd")
+    MsgBox("NumpadAdd")
 }
 
 funcKeypad4() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad4")
+    MsgBox("Numpad4")
 }
 
 funcKeypad5() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad5")
+    MsgBox("Numpad5")
 }
 
 funcKeypad6() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad6")
+    MsgBox("Numpad6")
 }
 
 funcKeypad1() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad1")
+    MsgBox("Numpad1")
 }
 
 funcKeypad2() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad2")
+    MsgBox("Numpad2")
 }
 
 funcKeypad3() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad3")
+    MsgBox("Numpad3")
 }
 
 funcKeypadEnter() {
-    MsgBox("Ctrl+Shift+Alt+F13+NumpadEnter")
+    MsgBox("NumpadEnter")
 }
 
 funcKeypad0() {
-    MsgBox("Ctrl+Shift+Alt+F13+Numpad0")
+    ShowTooltip("Numpad0",500)
 }
 
-funcKeypadPeriodAndDelete() {
-    MsgBox("Ctrl+Shift+Alt+F13+NumpadDel")
+funcKeypadPeriodAndDelete() {    
+    ShowTooltip("NumpadDel",500)
 }
